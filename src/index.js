@@ -24,24 +24,49 @@ document.addEventListener('DOMContentLoaded', () => {
         })
     }
 
-    newQuoteForm.addEventListener('submit', addNewQuote)
+    newQuoteForm.addEventListener('submit', createNewQuote)
 
-    function addNewQuote(e){
+    function createNewQuote(e){
         e.preventDefault()
-        const newQuoteLine = document.createElement('li')
-        newQuoteLine.innerHTML = `
-        <li class='quote-card'>
-        <blockquote class="blockquote">
-          <p class="mb-0">${e.target.quote.value}</p>
-          <footer class="blockquote-footer">${e.target.author.value}</footer>
-          <br>
-          <button class='btn-success'>Likes: <span>0</span></button>
-          <button class='btn-danger'>Delete</button>
-        </blockquote>
-      </li>
-        `
-        quoteList.appendChild(newQuoteLine)
+        const newQuoteObject = {
+            quote:e.target.quote.value,
+            author:e.target.author.value,
+        }
+        addNewQuote(newQuoteObject)
+
+    //     const newQuoteLine = document.createElement('li')
+    //     newQuoteLine.innerHTML = `
+    //     <li class='quote-card'>
+    //     <blockquote class="blockquote">
+    //       <p class="mb-0">${e.target.quote.value}</p>
+    //       <footer class="blockquote-footer">${e.target.author.value}</footer>
+    //       <br>
+    //       <button class='btn-success'>Likes: <span>0</span></button>
+    //       <button class='btn-danger'>Delete</button>
+    //     </blockquote>
+    //   </li>
+    //     `
+    //     quoteList.appendChild(newQuoteLine)
     }
+
+    function addNewQuote(newQuoteObject){
+        fetch('http://localhost:3000/quotes', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(newQuoteObject)
+        })
+        .then(res => res.json())
+        .then(quotes => {
+            quoteList.textContent = ''
+            renderList()
+        })
+    }
+
+    document.querySelector('#btn-danger').addEventListener('click', () => {
+        const confirmed = window.confirm('Delete Quote?')
+    })
 
     renderList()
 })

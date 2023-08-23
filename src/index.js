@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const newQuoteForm = document.getElementById('new-quote-form')
 
     function renderList(){
+        quoteList.innerText = ''
         fetch('http://localhost:3000/quotes?_embed=likes')
         .then(res => res.json())
         .then(quotes => {
@@ -20,9 +21,17 @@ document.addEventListener('DOMContentLoaded', () => {
               </li>
                 `
                 quoteList.appendChild(quoteLine)
+
                 const deleteButton = quoteLine.querySelector('.btn-danger')
                 deleteButton.addEventListener('click', (e) => {
-                    e.target.parentElement.remove()
+                    // e.target.parentElement.remove()
+                    fetch(`http://localhost:3000/quotes/${quoteObject.id}`, {
+                        method: 'DELETE',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                    })
+                    .then(() => renderList())
                 })
             })
         })

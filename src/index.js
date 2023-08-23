@@ -20,6 +20,10 @@ document.addEventListener('DOMContentLoaded', () => {
               </li>
                 `
                 quoteList.appendChild(quoteLine)
+                const deleteButton = quoteLine.querySelector('.btn-danger')
+                deleteButton.addEventListener('click', (e) => {
+                    e.target.parentElement.remove()
+                })
             })
         })
     }
@@ -63,10 +67,6 @@ document.addEventListener('DOMContentLoaded', () => {
             renderList()
         })
     }
-
-    document.querySelector('#btn-danger').addEventListener('click', () => {
-        const confirmed = window.confirm('Delete Quote?')
-    })
 
     renderList()
 })

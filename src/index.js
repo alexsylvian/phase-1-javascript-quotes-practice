@@ -33,6 +33,11 @@ document.addEventListener('DOMContentLoaded', () => {
                     })
                     .then(() => renderList())
                 })
+
+                const likesButton = quoteLine.querySelector('.btn-success')
+                likesButton.addEventListener('click', () => {
+                    console.log('like')
+                })
             })
         })
     }

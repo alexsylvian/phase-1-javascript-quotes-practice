@@ -3,18 +3,49 @@
     {
       "quote": "a",
       "author": "1",
-      "id": 16
-    },
-    {
-      "quote": "a",
-      "author": "1",
-      "id": 17
-    },
-    {
-      "quote": "a",
-      "author": "1",
-      "id": 18
+      "id": 1
     }
   ],
-  "likes": []
+  "likes": [
+    {
+      "quoteId": 1,
+      "id": 1
+    },
+    {
+      "quoteId": 1,
+      "id": 2
+    },
+    {
+      "quoteId": 1,
+      "id": 3
+    },
+    {
+      "quoteId": 1,
+      "id": 4
+    },
+    {
+      "quoteId": 1,
+      "id": 5
+    },
+    {
+      "quoteId": 1,
+      "id": 6
+    },
+    {
+      "quoteId": 1,
+      "id": 7
+    },
+    {
+      "quoteId": 1,
+      "id": 8
+    },
+    {
+      "quoteId": 1,
+      "id": 9
+    },
+    {
+      "quoteId": 1,
+      "id": 10
+    }
+  ]
 }
